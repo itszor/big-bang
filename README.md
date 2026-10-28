@@ -23,12 +23,17 @@ finds every world's files where it looks).
     recomp/             make regen (analysis + superspider gen), make, ./bigbang
 
 Committed: recipe.json, build.sh, analysis/run.sh, analysis/buuni.roots
-(empty: no gaps found), recomp/Makefile, recomp/game.c, this file.
+(empty: no gaps found), recomp/Makefile, recomp/game.c, recomp/bigbang.ini
+(--crop's rows), this file.
 
 Playing
 -------
 
-    ./bigbang [--scale=N] [--fullscreen] [--no-sound]
+    ./bigbang [--scale=N] [--fullscreen] [--no-sound] [--crop]
+
+--crop shows only rows 28-227 of the screen (recomp/bigbang.ini), where
+everything the game draws is: larger on a widescreen monitor. The mini
+mode is shown whole.
 
 The Psycore picture, the spinning Big Bang planet, then demos. Return
 brings up the side select: Z and X move the bar between Jellyhead, the
