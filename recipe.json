@@ -1,0 +1,46 @@
+{
+ "name": "big-bang",
+ "title": "Big Bang (Psycore, 1990s)",
+ "platform": "acorn-archimedes",
+ "doc": "A recipe: how to turn a user's own copy of the game into a native executable. It holds no game data: the inputs are recognised by content (see $SS/tools/weave.py).",
+ "inputs": {
+  "containers": {
+   "bigbang.zip": "c5f0681ee3a30a6ff45e7ae7237f89d38176c0bb032d37f2931a9937322ce2de"
+  },
+  "formats": [
+   "zip",
+   "directory"
+  ]
+ },
+ "discs": [
+  {
+   "name": "app",
+   "title": "!BigBang: a RISC OS zip of the application",
+   "known_images": [],
+   "key_files": {
+    "!BigBang/!Run": "221c703a3b2355f477bb3979fafe4cac492370316492be169f3d1b1edf9b7a22",
+    "!BigBang/buuni": "b92d05c27879551317dbbcb9d98784f2cadeb329df2d92ccafc2b98b21772543",
+    "!BigBang/z15": "f8f7d0f822e01cd957810a018454b9ca0caa35f5f7bf6f71d49677bb9253a754",
+    "!BigBang/fun": "9a3ddf03d496545d049ccc55fcbf8dcdbd7bb6fa504b27161e400581f345a1f9",
+    "!BigBang/machine/z7": "979e8f288d051831eecd465ad0923ca49932dd8af4bf27007c8a979f772a0f05",
+    "!BigBang/machine/a0": "a8e4c57fb1914e80ee467e5288c2b129098ff9acf18cf5330ebe60feb0e6c6a4",
+    "!BigBang/sprytes/z9": "9390818696470d9efbb75512a1a198d758d0add21f4fa20101f57f9a05e40343"
+   },
+   "game_dirs": [
+    "!BigBang"
+   ]
+  }
+ ],
+ "build": [
+  "python3 -I \"$WEAVE\" extract . INPUTS",
+  "make -C recomp regen",
+  "make -C recomp"
+ ],
+ "output": "recomp/bigbang",
+ "requires": {
+  "superspider": "~/stuff/superspider, or $SUPERSPIDER (dune build): analyse, gen, tools/weave.py",
+  "libroger": "~/stuff/libroger, or make ROGER=...",
+  "host": ["python3", "ocaml + dune", "gcc", "SDL3 (pkg-config sdl3)"]
+ },
+ "run": "cd recomp && ./bigbang"
+}
